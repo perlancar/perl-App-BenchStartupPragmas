@@ -29,3 +29,8 @@ Benchmark::Command::run(
 Sample output:
 
 # COMMAND: perl bin/bench-startup-pragmas 2>&1
+
+
+=head1 SEE ALSO
+
+L<bench-startup-preamble-modules>
