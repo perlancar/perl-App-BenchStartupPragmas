@@ -1,0 +1,31 @@
+#!perl
+
+use 5.010;
+use strict;
+use warnings;
+
+use Benchmark::Command;
+
+Benchmark::Command::run(
+    undef,
+    {
+        'none'                 => [$^X, "-e1"],
+        '5.10'                 => [$^X, "-e", "use 5.010"],
+        'warnings'             => [$^X, "-e", "use warnings"],
+        'strict'               => [$^X, "-e", "use strict"],
+        'experimental'         => [$^X, "-e", "use experimental"],
+        '5.10+strict+warnings' => [$^X, "-e", "use 5.010;use strict;use warnings"],
+        'Modern::Perl 2015'    => [$^X, "-e", "use Modern::Perl 2015"],
+    },
+);
+
+# ABSTRACT: Benchmark startup time of various Perl pragmas
+# PODNAME:
+
+=head1 SYNOPSIS
+
+ % bench-startup-pragmas
+
+Sample output:
+
+# COMMAND: perl bin/bench-startup-pragmas 2>&1
